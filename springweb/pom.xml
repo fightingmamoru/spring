@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mamoru</groupId>
 	<artifactId>springweb</artifactId>
@@ -8,12 +9,42 @@
 	<name>springweb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
+	<!-- Version Propeties -->
+	<properties>
+		<java-version>1.7</java-version>
+		<org.springframework-version>4.2.5.RELEASE</org.springframework-version>
+		<junit-version>4.12</junit-version>
+	</properties>
+
 	<dependencies>
+		<!-- junit Dependency -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>${junit-version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Spring Dependency -->
+		<!-- Spring context (exclude commons-logging / use log4j2 & slf4j)-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- Spring web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- Spring webmvc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
 		</dependency>
 	</dependencies>
 
