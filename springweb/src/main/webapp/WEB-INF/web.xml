@@ -6,9 +6,10 @@
 		  version="3.0">
 
 	<!-- Root Context : Definition of the Root Spring Container shared by all Servlets and Filters-->
+	<!-- - contextConfigLocation edit. use class path. And move file another directory. -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>WEB-INF/spring/root-context.xml</param-value>
+		<param-value>classpath*:/spring/root-context.xml</param-value>
 	</context-param>
 
 	<!-- Listener : Spring Container shared by all Servlets and Filters -->
@@ -17,12 +18,13 @@
 	</listener>
 
 	<!-- Servlet : Processes apllication requests -->
+	<!-- - contextConfigLocation edit. use class path. And move file another directory. -->
 	<servlet>
 		<servlet-name>springwebServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>WEB-INF/spring/springwebServlet/servlet-context.xml</param-value>
+			<param-value>classpath*:/spring/springwebServlet/servlet-context-*.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
