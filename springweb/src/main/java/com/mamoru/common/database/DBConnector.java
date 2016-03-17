@@ -39,7 +39,9 @@ public class DBConnector
 
 		basicDataSource = (BasicDataSource) applicationContext.getBean("basicDataSource");
 
-		LOGGER.debug("[Init DB Connector] END =============================================================");
+		LOGGER.debug("[BasicDataSource Info] " + basicDataSource.getDriverClassName());
+
+		LOGGER.debug("[Init DB Connector] END =============================================================\n");
 
 		// 추가로 데이터 풀을 만들기 위해서는 추가정보 필요. (DB에서 조회한 정보? 같은 것들)
 		// 실제적으로 관리를 이해서는 따로 DB 풀을 관리하는 클래스를 만들고 제어하게 처리 필요
@@ -56,6 +58,14 @@ public class DBConnector
 
 	public synchronized Connection getConnection() throws SQLException
 	{
-		return basicDataSource.getConnection();
+		try
+		{
+			return basicDataSource.getConnection();
+		}
+		catch (SQLException e)
+		{
+			LOGGER.error(e);
+			throw e;
+		}
 	}
 }

@@ -23,23 +23,52 @@ public class DBConnectorTest
 	private static Logger LOGGER = LogManager.getLogger(DBConnectorTest.class);
 
 	@Test
-	public void selectTable() throws SQLException
+	public void selectTable()
 	{
-		Connection connection = DBConnector.getInstance().getConnection();
+		Connection connection = null;
+		PreparedStatement pstmt = null;
 
-		String sql = "SELECT COLUMN_NAME\n" +
-					 "FROM COLS\n" +
-					 "WHERE TABLE_NAME = 'LINKS'";
-
-		PreparedStatement pstmt =connection.prepareStatement(sql);
-		ResultSet rs = pstmt.executeQuery();
-
-		while ( rs.next() )
+		try
 		{
-			LOGGER.debug("[Data List] " + rs.getString("COLUMN_NAME"));
-		}
 
-		pstmt.close();
-		connection.close();
+			connection = DBConnector.getInstance().getConnection();
+
+			String sql = "SELECT COLUMN_NAME\n" +
+					"FROM COLS\n" +
+					"WHERE TABLE_NAME = 'LINKS';";
+
+			pstmt = connection.prepareStatement(sql);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next())
+			{
+				LOGGER.debug("[Data List] " + rs.getString("COLUMN_NAME"));
+			}
+		}
+		catch (Exception e)
+		{
+			LOGGER.error(e);
+		}
+		finally
+		{
+			try
+			{
+				connection.close();
+			}
+			catch (SQLException e)
+			{
+				LOGGER.error(e);
+			}
+
+			try
+			{
+				pstmt.close();
+			}
+			catch (SQLException e)
+			{
+				LOGGER.error(e);
+			}
+		}
 	}
 }
