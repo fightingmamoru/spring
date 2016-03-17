@@ -60,9 +60,17 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
+			<scope>test</scope>
 		</dependency>
 
-		<!-- slf4j & log4j Dependency : for logging -->
+		<!-- Spring jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- slf4j & log4j2 Dependency : for logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -100,7 +108,7 @@
 			<version>1.7.7.1</version>
 		</dependency>
 
-		<!-- Oracle JDBC Driver (Local Maven Repository) -->
+		<!-- Oracle jdbc Driver (Local Maven Repository) -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
@@ -121,6 +129,20 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- myBatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.4</version>
+		</dependency>
+
 
 	</dependencies>
 

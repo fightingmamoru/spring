@@ -30,7 +30,6 @@ public class DBConnectorTest
 
 		try
 		{
-
 			connection = DBConnector.getInstance().getConnection();
 
 			String sql = "SELECT COLUMN_NAME\n" +

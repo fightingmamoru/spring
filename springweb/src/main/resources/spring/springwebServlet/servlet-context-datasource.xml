@@ -9,7 +9,7 @@
 	<!-- Basic Datasource -->
 	<bean id="basicDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@//192.168.123.16:1521/ORA101" />
+		<property name="url" value="jdbc:oracle:thin:@//192.168.123.16:1521/ORA10" />
 		<property name="username" value="openidm" />
 		<property name="password" value="openidm" />
 		<property name="initialSize" value="3" />
