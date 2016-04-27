@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:batch="http://www.springframework.org/schema/batch"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd">
+
+	<!-- 01. Job Launcher -->
+	<bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+		<property name="jobRepository" ref="jobRepository"/>
+	</bean>
+
+	<!-- 02. Job Repository -->
+	<bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+	</bean>
+
+	<!-- 03. Transaction Manager -->
+	<bean id="transactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"/>
+
+	<!-- 04. Batch Tasklet -->
+	<bean id="helloSpringBatchTask" class="com.mamoru.common.batch.HelloSpringBatchTasklet">
+		<property name="message" value="Hello, Spring Batch!"/>
+	</bean>
+
+	<!-- 05. Batch Job Description -->
+	<batch:job id="helloSpringBatchJob">
+		<batch:step id="step1" next="step2">
+			<batch:tasklet ref="helloSpringBatchTask"/>
+		</batch:step>
+		<batch:step id="step2">
+			<batch:tasklet ref="helloSpringBatchTask"/>
+		</batch:step>
+	</batch:job>
+
+</beans>

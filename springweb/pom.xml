@@ -41,6 +41,12 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
 		<!-- Spring web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -68,6 +74,21 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- todo : Now Testing -->
+		<!-- Spring Batch -->
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-core</artifactId>
+			<version>3.0.6.RELEASE</version>
+		</dependency>
+
+		<!-- Quartz Scheduler -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.3</version>
 		</dependency>
 
 		<!-- slf4j & log4j2 Dependency : for logging -->
