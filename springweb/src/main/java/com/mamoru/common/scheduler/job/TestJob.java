@@ -18,7 +18,7 @@ public class TestJob extends QuartzJobBean
 
 		try
 		{
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 		}
 		catch (InterruptedException e)
 		{

@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:batch="http://www.springframework.org/schema/batch"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd">
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/bean http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<!-- 01. Define Job -->
+	<bean name="testJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.mamoru.common.scheduler.job.TestJob"/>
+	</bean>
 
+	<!-- 02. Define Job Trigger -->
+	<bean id="testTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="repeatInterval" value="5000"/>
+		<property name="repeatCount" value="3"/>
+		<property name="jobDetail" ref="testJob"/>
+	</bean>
 
+	<!-- 03. Define Scheduler-->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="testTrigger"/>
+			</list>
+		</property>
+	</bean>
 </beans>
