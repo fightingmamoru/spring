@@ -21,11 +21,27 @@
 		<property name="cronExpression" value="0/5 * * * * ? *"/>
 	</bean>
 
+	<!-- 02-2. Define TestBean -->
+	<bean name="testBean" class="com.mamoru.common.scheduler.job.TestBean"/>
+
+	<!-- 02-2. Define Method Invocation Job -->
+	<bean id="methodInvocationJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="testBean"/>
+		<property name="targetMethod" value="doCallingTwo"/>
+	</bean>
+
+	<!-- 02-2. Define Method Invocation Trigger -->
+	<bean id="methodInvocationTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="methodInvocationJob"/>
+		<property name="repeatInterval" value="5000"/>
+		<property name="repeatCount" value="3"/>
+	</bean>
+
 	<!-- 03. Define Scheduler-->
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-				<ref bean="cronTrigger"/>
+				<ref bean="methodInvocationTrigger"/>
 			</list>
 		</property>
 	</bean>

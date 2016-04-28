@@ -20,7 +20,7 @@ public class TestJobTest
 	{
 		System.out.println("[TestJobTest] START");
 
-		Thread.sleep(20000);
+		Thread.sleep(30000);
 
 		System.out.println("[TestJobTest] END");
 	}
