@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:schemaLocation="http://www.springframework.org/schema/bean http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- 01. Define Job -->
 	<bean name="testJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
@@ -15,12 +15,19 @@
 		<property name="jobDetail" ref="testJob"/>
 	</bean>
 
+	<!-- 02-1. Define Cron Trigger (every 30 minutes) -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="testJob"/>
+		<property name="cronExpression" value="0/5 * * * * ? *"/>
+	</bean>
+
 	<!-- 03. Define Scheduler-->
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-				<ref bean="testTrigger"/>
+				<ref bean="cronTrigger"/>
 			</list>
 		</property>
 	</bean>
+
 </beans>
