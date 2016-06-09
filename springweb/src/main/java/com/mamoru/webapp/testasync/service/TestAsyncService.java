@@ -7,4 +7,8 @@ public interface TestAsyncService
 	Boolean processAlpha(String param) throws InterruptedException;
 
 	Future<Boolean> processAlphaAsync() throws InterruptedException;
+
+	Boolean processDeltaAsync() throws InterruptedException;
+
+	Boolean processTotal() throws InterruptedException;
 }

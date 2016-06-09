@@ -31,4 +31,10 @@ public class TestAsyncServiceImplTest
 
 		System.out.println("[Test] END");
 	}
+
+	@Test
+	public void test2() throws InterruptedException
+	{
+		testAsyncService.processTotal();
+	}
 }

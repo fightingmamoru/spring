@@ -41,4 +41,31 @@ public class TestAsyncServiceImpl implements TestAsyncService
 
 		return new AsyncResult<Boolean>(true);
 	}
+
+	@Async
+	@Override
+	public Boolean processDeltaAsync() throws InterruptedException
+	{
+		System.out.println("[processDeltaAsync()] START");
+
+		Thread.sleep(10000);
+
+		System.out.println("[processDeltaAsync()] END");
+
+		return true;
+	}
+
+	@Override
+	public Boolean processTotal() throws InterruptedException
+	{
+		System.out.println("[processTotal()] START");
+
+		Thread.sleep(3000);
+
+		processDeltaAsync();
+
+		System.out.println("[processTotal()] END");
+
+		return null;
+	}
 }
