@@ -21,11 +21,11 @@ public class LDAPConnectorTest
 	@Test
 	public void checkLdapConnection()
 	{
-		String url = "ldap://localhost:10389";
-		String baseDN = "ou=system";
-		String user = "uid=admin,ou=system";
+		String url = "ldap://localhost:389";
+		String baseDN = "ou=People,dc=my-domain,dc=com";
+		String user = "cn=Manager,dc=my-domain,dc=com";
 		String password = "secret";
-		String filter = "(&(objectclass=group))";
+		String filter = "(objectclass=person)";
 
 		boolean result = LDAPConnector.getInstance().connectionCheck(url, user, password, baseDN, filter);
 
