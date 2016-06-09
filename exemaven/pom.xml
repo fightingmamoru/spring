@@ -56,7 +56,7 @@
 					<!--<outputDirectory>c:/javaprogram</outputDirectory>-->
 					<!--<archive>-->
 						<!--<manifest>-->
-							<!--<mainClass>com.mamoru.dbconnect.checkMysqlConnect</mainClass>-->
+							<!--<mainClass>com.mamoru.dbconnect.CheckMysqlConnect</mainClass>-->
 							<!--<addClasspath>true</addClasspath>-->
 							<!--<classpathPrefix>lib/</classpathPrefix>-->
 						<!--</manifest>-->
@@ -97,7 +97,7 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>com.mamoru.dbconnect.checkMysqlConnect</mainClass>
+							<mainClass>com.mamoru.dbconnect.CheckMysqlConnect</mainClass>
 						</manifest>
 					</archive>
 					<outputDirectory>c:/javaprogram</outputDirectory>

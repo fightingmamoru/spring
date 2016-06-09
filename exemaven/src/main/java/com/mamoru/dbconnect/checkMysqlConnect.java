@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class checkMysqlConnect
+public class CheckMysqlConnect
 {
 	// 실제 구동될 클래스
 	public static void main(String[] args)
