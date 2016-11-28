@@ -22,6 +22,10 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="52428800"/>
+	</bean>
+
 	<!-- Component scan under base-package and add @Bean -->
 	<context:component-scan base-package="com.mamoru.webapp.*" />
 
